@@ -1,5 +1,6 @@
 using API.Controllers;
 using API.Model;
+using API.ProductFactory;
 using API.Service;
 using System;
 using System.Collections.Generic;
@@ -9,16 +10,18 @@ namespace OpenApiTest
 {
     public class TarriffControllerTest
     {
-        private IProductGeneratorService productGeneratorService;
+        private IProductGeneratorService _productGeneratorService;
         private readonly TarriffController _controller;
+        private readonly IProductTarrifFactory _productTarrifFactory;
 
         public TarriffControllerTest()
         {
-            productGeneratorService = new ProductGeneratorService();
-            _controller = new TarriffController(productGeneratorService);
+            _productTarrifFactory = new ProductTarrifFactory();
+            _productGeneratorService = new ProductGeneratorService(_productTarrifFactory);
+            _controller = new TarriffController(_productGeneratorService);
         }
         [Fact]
-        public void TestBasicAndPackageTarriffCalculationWithConsumptionAs0()
+        public void Test_Basic_And_Package_Tarriff_ToGet_ProductList_When_Consumption_Is_0()
         {
             // Arrange 
             var consumption = 0;
@@ -33,7 +36,7 @@ namespace OpenApiTest
 
         }
         [Fact]
-        public void TestBasicAndPackageTarriffCalculationWithConsumptionAs4000()
+        public void TTest_Basic_And_Package_Tarriff_ToGet_ProductList_When_Consumption_Is_4000()
         {
             // Arrange 
             var consumption = 4000;
@@ -48,7 +51,7 @@ namespace OpenApiTest
            
         }
         [Fact]
-        public void TestBasicAndPackageTarriffCalculationWithConsumptionAs6000()
+        public void Test_Basic_And_Package_Tarriff_ToGet_ProductList_When_Consumption_Is_6000()
         {
             // Arrange 
             var consumption = 6000;
@@ -63,7 +66,7 @@ namespace OpenApiTest
 
         }
         [Fact]
-        public void TestBasicAndPackageTarriffCalculationWithConsumptionAs4500()
+        public void Test_Basic_And_Package_Tarriff_ToGet_ProductList_When_Consumption_Is_4500()
         {
             // Arrange 
             var consumption = 4500;
@@ -78,7 +81,7 @@ namespace OpenApiTest
 
         }
         [Fact]
-        public void TestBasicAndPackageTarriffCalculationWithConsumptionAs3500()
+        public void Test_Basic_And_Package_Tarriff_ToGet_ProductList_When_Consumption_Is_3500()
         {
             // Arrange 
             var consumption = 3500;
