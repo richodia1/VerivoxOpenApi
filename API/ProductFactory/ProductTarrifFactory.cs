@@ -1,4 +1,5 @@
 ﻿using API.Model;
+using API.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,18 @@ namespace API.ProductFactory
     public class ProductTarrifFactory : IProductTarrifFactory
     {
 
-        public static readonly double Cent22Rate = 0.22;  // 22/100
-        public static readonly double Cent30Rate = 0.3;   //30/100
-        public static readonly string Basic_Electricity_Tarriff = "Basic_Electricity_Tarriff";
-        public static readonly string Packaged_Tarriff = "Packaged_Tarriff";
-        public Product GenerateBasicElectricityTarriffProduct(long cosumption)
+
+        public Product GenerateBasicElectricityTarriffProduct(long consumption)
         {
             Product prod = new Product();
-            prod.TarriffName = Basic_Electricity_Tarriff;
-            prod.AnnualCost = CalculateBasicElectricityTarriffAnnualCost(cosumption);
+            prod.TarriffName = ConstantValues.Get_Basic_Electricity_Tarriff_Name;
+            prod.AnnualCost = CalculateBasicElectricityTarriffAnnualCost(consumption);
             return prod;
         }
 
         public double CalculateBasicElectricityTarriffAnnualCost(long consumption)
         {
-            return 5 * 12 + consumption * Cent22Rate;
+            return 5 * 12 + consumption * ConstantValues.Get22CentRate;
         }
 
         public double CalculatePackagedTarriffAnnualCost(long consumption)
@@ -36,7 +34,7 @@ namespace API.ProductFactory
             else
             {
                 var diff = consumption - 4000;
-                result = 800 + diff * Cent30Rate;
+                result = 800 + diff * ConstantValues.Get30CentRate;
             }
 
 
@@ -46,7 +44,7 @@ namespace API.ProductFactory
         public Product GeneratePackagedTarriffProduct(long consumption)
         {
             Product prod = new Product();
-            prod.TarriffName = Packaged_Tarriff;
+            prod.TarriffName = ConstantValues.Get_Packaged_Tarriff_Name;
             prod.AnnualCost = CalculatePackagedTarriffAnnualCost(consumption);
             return prod;
         }
