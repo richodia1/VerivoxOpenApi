@@ -30,6 +30,7 @@ namespace OpenApiTest
 
             // Assert
             var items = Assert.IsType<List<Product>>(okResult);
+            Assert.NotNull(items);
             Assert.Equal(2, items.Count);
             Assert.NotEqual(items[0].AnnualCost, items[1].AnnualCost);
             Assert.True(items[0].AnnualCost < items[1].AnnualCost);  // always sorted in Acsending order
@@ -45,6 +46,7 @@ namespace OpenApiTest
 
             // Assert
             var items = Assert.IsType<List<Product>>(okResult);
+            Assert.NotNull(items);
             Assert.Equal(2, items.Count);
             Assert.NotEqual(items[0].AnnualCost, items[1].AnnualCost);
             Assert.True(items[0].AnnualCost < items[1].AnnualCost);  // always sorted in Acsending order
@@ -60,6 +62,7 @@ namespace OpenApiTest
 
             // Assert
             var items = Assert.IsType<List<Product>>(okResult);
+            Assert.NotNull(items);
             Assert.Equal(2, items.Count);
             Assert.NotEqual(items[0].AnnualCost, items[1].AnnualCost);
             Assert.True(items[0].AnnualCost < items[1].AnnualCost);  // always sorted in Acsending order
@@ -75,6 +78,7 @@ namespace OpenApiTest
 
             // Assert
             var items = Assert.IsType<List<Product>>(okResult);
+            Assert.NotNull(items);
             Assert.Equal(2, items.Count);
             Assert.NotEqual(items[0].AnnualCost, items[1].AnnualCost);
             Assert.True(items[0].AnnualCost < items[1].AnnualCost);  // always sorted in Acsending order
@@ -90,6 +94,7 @@ namespace OpenApiTest
 
             // Assert
             var items = Assert.IsType<List<Product>>(okResult);
+            Assert.NotNull(items);
             Assert.Equal(2, items.Count);
             Assert.NotEqual(items[0].AnnualCost, items[1].AnnualCost);
             Assert.True(items[0].AnnualCost < items[1].AnnualCost);  // always sorted in Acsending order
